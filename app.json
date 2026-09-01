@@ -1,29 +1,60 @@
 {
   "expo": {
-    "name": "rutaflow",
+    "name": "RutaFlow",
     "slug": "rutaflow",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0d0f14"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "mx.rutaflow.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "RutaFlow usa tu ubicación para registrar km de tus viajes.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "RutaFlow necesita tu ubicación en segundo plano para seguir registrando km cuando cambias de app o bloqueas el teléfono.",
+        "NSLocationAlwaysUsageDescription": "RutaFlow necesita tu ubicación en segundo plano para seguir registrando km cuando cambias de app o bloqueas el teléfono.",
+        "NSCameraUsageDescription": "RutaFlow usa la cámara para capturar pantallas de Uber/Didi y extraer datos del viaje.",
+        "NSPhotoLibraryUsageDescription": "RutaFlow accede a tus fotos para analizar capturas de Uber/Didi."
+      },
+      "backgroundModes": ["location"]
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
-      }
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#0d0f14"
+      },
+      "package": "mx.rutaflow.app",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-secure-store",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "RutaFlow necesita tu ubicación en segundo plano para seguir registrando km cuando cambias de app o bloqueas el teléfono.",
+          "isAndroidBackgroundLocationEnabled": true,
+          "isAndroidForegroundServiceEnabled": true
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "TU_PROJECT_ID"
+      }
     }
   }
 }
